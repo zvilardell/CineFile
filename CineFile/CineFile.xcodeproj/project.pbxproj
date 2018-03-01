@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5E8371B31648A9A3E45B721E /* Pods_CineFile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78777F52EC24B2E41C0B5EBE /* Pods_CineFile.framework */; };
 		86D59D5922CAF6002D562389 /* Pods_CineFileUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85581505CFB8C2369EB4A342 /* Pods_CineFileUITests.framework */; };
+		B627AB7D2048939700B3C84C /* TMDBConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B627AB7C2048939700B3C84C /* TMDBConfiguration.swift */; };
 		B63D2E112033D1E900E4CED5 /* APIRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63D2E102033D1E900E4CED5 /* APIRequestManager.swift */; };
 		B6AAAB27202E6D1B005807DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AAAB26202E6D1B005807DB /* AppDelegate.swift */; };
 		B6AAAB29202E6D1B005807DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AAAB28202E6D1B005807DB /* ViewController.swift */; };
@@ -47,6 +48,7 @@
 		89510E92492036ECE9090505 /* Pods-CineFileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CineFileTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CineFileTests/Pods-CineFileTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9CD43A4E73DA9431B7F8D769 /* Pods-CineFile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CineFile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CineFile/Pods-CineFile.debug.xcconfig"; sourceTree = "<group>"; };
 		A217B7CE66B3D848890A9DBA /* Pods-CineFileUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CineFileUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CineFileUITests/Pods-CineFileUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B627AB7C2048939700B3C84C /* TMDBConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBConfiguration.swift; sourceTree = "<group>"; };
 		B63D2E102033D1E900E4CED5 /* APIRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestManager.swift; sourceTree = "<group>"; };
 		B6AAAB23202E6D1B005807DB /* CineFile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CineFile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6AAAB26202E6D1B005807DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				B6AAAB35202E6D1B005807DB /* Info.plist */,
 				B6AAAB2D202E6D1B005807DB /* CineFile.xcdatamodeld */,
 				B63D2E102033D1E900E4CED5 /* APIRequestManager.swift */,
+				B627AB7C2048939700B3C84C /* TMDBConfiguration.swift */,
 			);
 			path = CineFile;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				B6AAAB29202E6D1B005807DB /* ViewController.swift in Sources */,
 				B6AAAB2F202E6D1B005807DB /* CineFile.xcdatamodeld in Sources */,
 				B6AAAB27202E6D1B005807DB /* AppDelegate.swift in Sources */,
+				B627AB7D2048939700B3C84C /* TMDBConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

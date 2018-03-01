@@ -13,8 +13,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        APIRequestManager.sharedInstance.searchMoviesByTitle(title: "Superbad")
-        APIRequestManager.sharedInstance.getMovieByID(id: 8363)
+        APIRequestManager.sharedInstance.getConfiguration() { configuration in
+            print(configuration.baseImageURL)
+            print(configuration.posterImageSize)
+            APIRequestManager.sharedInstance.searchMoviesByTitle(title: "Superbad")
+            APIRequestManager.sharedInstance.getMovieByID(id: 8363)
+        }
     }
 
     override func didReceiveMemoryWarning() {
