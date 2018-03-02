@@ -53,8 +53,10 @@ class APIRequestManager: NSObject {
                 "api_key" : tmdbKey
             ]
             Alamofire.request(baseRequestURL + configurationEndpoint, method: .get, parameters: parameterDict).responseJSON {[unowned self] response in
-                if let responseDict = response.result.value as? [String:Any], let imageConfigDict = responseDict["images"] as? [String:Any],
-                let imageURLString = imageConfigDict["secure_base_url"] as? String, let posterSizes = imageConfigDict["poster_sizes"] as? [String] {
+                if let responseDict = response.result.value as? [String:Any],
+                let imageConfigDict = responseDict["images"] as? [String:Any],
+                let imageURLString = imageConfigDict["secure_base_url"] as? String,
+                let posterSizes = imageConfigDict["poster_sizes"] as? [String] {
                     self.configuration = TMDBConfiguration(baseImageURL: imageURLString, posterImageSize: posterSizes.last ?? "w780") //use the largest image size if possible
                     completion(self.configuration)
                 } else if let error = response.result.error {
@@ -78,7 +80,8 @@ class APIRequestManager: NSObject {
                     "query"   : title
                 ]
                 Alamofire.request(self.baseRequestURL + self.searchEndpoint, method: .get, parameters: parameterDict).responseJSON { response in
-                    if let responseDict = response.result.value as? [String:Any], let searchResults = responseDict["results"] as? [[String:Any]] {
+                    if let responseDict = response.result.value as? [String:Any],
+                    let searchResults = responseDict["results"] as? [[String:Any]] {
                         print(searchResults)
                         completion(nil)
                     } else if let error = response.result.error {
