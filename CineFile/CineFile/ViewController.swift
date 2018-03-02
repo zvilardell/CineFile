@@ -13,8 +13,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        APIRequestManager.sharedInstance.searchMoviesByTitle(title: "Superbad") { _ in
-            APIRequestManager.sharedInstance.getMovieByID(id: 8363) { _ in }
+        APIRequestManager.sharedInstance.searchMoviesByTitle(title: "Days of Heaven") { _ in
+            APIRequestManager.sharedInstance.getCreditsByMovieID(id: 16642) { _ in }
         }
     }
 

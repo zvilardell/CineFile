@@ -16,14 +16,14 @@ class APIRequestManager: NSObject {
     let baseRequestURL = "https://api.themoviedb.org/3"
     let configurationEndpoint = "/configuration"
     let searchEndpoint = "/search/movie"
-    let movieEndpoint = "/movie"
+    let creditsEndpoint = "/movie/#/credits" // # replaced by movie id on request
     
     //set when we retrieve configuration data
     var configuration: TMDBConfiguration!
     
     typealias ConfigurationCompletion = (TMDBConfiguration?)->()
     typealias MoviesByTitleCompletion = ([Movie]?)->()
-    typealias MovieByIDCompletion = (Movie?)->()
+    typealias CreditsByIDCompletion = (Movie?)->()
     
     //---------------------------------------------------------------------------------------------------------------------------
     //singleton setup
@@ -98,12 +98,15 @@ class APIRequestManager: NSObject {
         }
     }
     
-    func getMovieByID(id: UInt, completion: @escaping MovieByIDCompletion) {
+    func getCreditsByMovieID(id: UInt, completion: @escaping CreditsByIDCompletion) {
         let parameterDict: [String:String] = [
             "api_key"  : tmdbKey
         ]
-        Alamofire.request(baseRequestURL + movieEndpoint + "/\(id)", method: .get, parameters: parameterDict).responseJSON { response in
+        let creditsEndpointComponents: [String] = self.creditsEndpoint.components(separatedBy: "#")
+        let creditsEndpoint = creditsEndpointComponents[0] + "\(id)" + creditsEndpointComponents[1]
+        Alamofire.request(baseRequestURL + creditsEndpoint, method: .get, parameters: parameterDict).responseJSON { response in
             if let responseDict = response.result.value as? [String:Any] {
+                //filter directors, writers, and DPs from response
                 print(responseDict)
                 completion(nil)
             } else if let error = response.result.error {
@@ -112,7 +115,7 @@ class APIRequestManager: NSObject {
                 completion(nil)
             } else {
                 //an unknown error occurred
-                print("Unable to retrieve movie by ID at this time.")
+                print("Unable to retrieve movie credits at this time.")
                 completion(nil)
             }
         }
