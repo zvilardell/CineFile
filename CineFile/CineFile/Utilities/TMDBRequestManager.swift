@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class APIRequestManager: NSObject {
+class TMDBRequestManager: NSObject {
     
     //request constants
     var tmdbKey: String!
@@ -30,7 +30,7 @@ class APIRequestManager: NSObject {
     //---------------------------------------------------------------------------------------------------------------------------
     //singleton setup
     
-    static let sharedInstance = APIRequestManager()
+    static let sharedInstance = TMDBRequestManager()
     private override init() {
         super.init()
         //grab tmdb api key used to authenticate requests
