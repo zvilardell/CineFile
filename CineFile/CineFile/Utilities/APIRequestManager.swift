@@ -15,6 +15,7 @@ class APIRequestManager: NSObject {
     var tmdbKey: String!
     let baseRequestURL = "https://api.themoviedb.org/3"
     let configurationEndpoint = "/configuration"
+    let genreListEndpoint = "/genre/movie/list"
     let searchEndpoint = "/search/movie"
     let creditsEndpoint = "/movie/#/credits" // # replaced by movie id on request
     
@@ -22,6 +23,7 @@ class APIRequestManager: NSObject {
     var configuration: TMDBConfiguration!
     
     typealias ConfigurationCompletion = (TMDBConfiguration?)->()
+    typealias GenreListCompletion = ([UInt:Genre]?)->()
     typealias MoviesByTitleCompletion = ([Movie]?)->()
     typealias CreditsByIDCompletion = (Movie?)->()
     
@@ -57,8 +59,18 @@ class APIRequestManager: NSObject {
                 let imageConfigDict = responseDict["images"] as? [String:Any],
                 let imageURLString = imageConfigDict["secure_base_url"] as? String,
                 let posterSizes = imageConfigDict["poster_sizes"] as? [String] {
-                    self.configuration = TMDBConfiguration(baseImageURL: imageURLString, posterImageSize: posterSizes.last ?? "w780") //use the largest image size if possible
-                    completion(self.configuration)
+                    //get tmdb genre list
+                    self.getGenreList() { genreDict in
+                        if let genres = genreDict {
+                            self.configuration = TMDBConfiguration(baseImageURL: imageURLString,
+                                                                   posterImageSize: posterSizes.last ?? "w780", //use the highest-quality image size possible
+                                                                   genresByID: genres)
+                            completion(self.configuration)
+                        } else {
+                            //unable to retrieve genre data
+                            completion(nil)
+                        }
+                    }
                 } else if let error = response.result.error {
                     //an error occurred
                     print(error.localizedDescription)
@@ -68,6 +80,35 @@ class APIRequestManager: NSObject {
                     print("Unable to retrieve TMDB configuration at this time.")
                     completion(nil)
                 }
+            }
+        }
+    }
+    
+    private func getGenreList(completion: @escaping GenreListCompletion) {
+        //retrieve tmdb configuration data
+        let parameterDict: [String:String] = [
+            "api_key" : tmdbKey
+        ]
+        Alamofire.request(baseRequestURL + genreListEndpoint, method: .get, parameters: parameterDict).responseJSON { response in
+            if let responseDict = response.result.value as? [String:Any],
+            let genreList = responseDict["genres"] as? [[String:Any]] {
+                //build genre dictionary from response
+                var genreDict: [UInt:Genre] = [:]
+                for genre in genreList {
+                    if let id = genre["id"] as? UInt,
+                    let name = genre["name"] as? String {
+                        genreDict[id] = Genre(rawValue: name)
+                    }
+                }
+                completion(genreDict)
+            } else if let error = response.result.error {
+                //an error occurred
+                print(error.localizedDescription)
+                completion(nil)
+            } else {
+                //an unknown error occurred
+                print("Unable to retrieve TMDB genre data at this time.")
+                completion(nil)
             }
         }
     }
