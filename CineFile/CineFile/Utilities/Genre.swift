@@ -9,6 +9,7 @@
 import Foundation
 
 enum Genre: String {
+    //all TMDB genres
     case Action
     case Adventure
     case Animation

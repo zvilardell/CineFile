@@ -85,7 +85,7 @@ class TMDBRequestManager: NSObject {
     }
     
     private func getGenreList(completion: @escaping GenreListCompletion) {
-        //retrieve tmdb configuration data
+        //retrieve tmdb genre data
         let parameterDict: [String:String] = [
             "api_key" : tmdbKey
         ]
