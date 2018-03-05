@@ -1,14 +1,14 @@
 //
-//  Movie.swift
+//  MovieSearchResult.swift
 //  CineFile
 //
-//  Created by Zach Vilardell on 3/1/18.
+//  Created by Zach Vilardell on 3/5/18.
 //  Copyright © 2018 zvilardell. All rights reserved.
 //
 
 import Foundation
 
-struct Movie {
+struct MovieSearchResult {
     var id: UInt!
     var title: String!
     var overview: String!
@@ -16,7 +16,4 @@ struct Movie {
     var releaseDate: Date!
     var genres: [Genre]!
     var posterImageURL: URL!
-    var directors: [String]!
-    var writers: [String]!
-    var cinematographers: [String]!
 }
