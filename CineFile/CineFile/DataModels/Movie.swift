@@ -9,5 +9,14 @@
 import Foundation
 
 struct Movie {
-    
+    var id: UInt!
+    var title: String!
+    var overview: String!
+    var language: String!
+    var releaseDate: Date!
+    var genres: [Genre]!
+    var directors: [String]!
+    var writers: [String]!
+    var cinematographers: [String]!
+    var posterImageURL: URL!
 }
