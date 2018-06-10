@@ -192,7 +192,7 @@ extension TMDBManager {
         return URL(string: urlString)
     }
     
-    func genresForIDs(_ ids: [UInt]) -> [Genre]? {
+    func genresFromIDs(_ ids: [UInt]) -> [Genre]? {
         guard let config = configuration else {
             print("No TMDb configuration found.")
             return nil

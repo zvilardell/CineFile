@@ -33,7 +33,7 @@ struct Movie {
             self.releaseDate = releaseDate
         }
         if let genreIDs = movieInfo["genre_ids"] as? [UInt],
-        let genres = TMDBManager.sharedInstance.genresForIDs(genreIDs) {
+        let genres = TMDBManager.sharedInstance.genresFromIDs(genreIDs) {
             self.genres = genres
         }
         if let posterPath = movieInfo["poster_path"] as? String,
