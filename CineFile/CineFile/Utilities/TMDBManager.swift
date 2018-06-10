@@ -1,5 +1,5 @@
 //
-//  APIRequestManager.swift
+//  TMDBManager.swift
 //  CineFile
 //
 //  Created by Zach Vilardell on 2/13/18.
@@ -9,42 +9,48 @@
 import UIKit
 import Alamofire
 
-class TMDBRequestManager: NSObject {
+class TMDBManager: NSObject {
     
     //request constants
-    var tmdbKey: String!
-    let baseRequestURL = "https://api.themoviedb.org/3"
-    let configurationEndpoint = "/configuration"
-    let genreListEndpoint = "/genre/movie/list"
-    let searchEndpoint = "/search/movie"
-    let creditsEndpoint = "/movie/#/credits" // # replaced by movie id on request
+    private var tmdbKey: String!
+    private let baseRequestURL = "https://api.themoviedb.org/3"
+    private let configurationEndpoint = "/configuration"
+    private let genreListEndpoint = "/genre/movie/list"
+    private let searchEndpoint = "/search/movie"
+    private let creditsEndpoint = "/movie/#/credits" // # replaced by movie id on request
     
     //set when we retrieve configuration data
-    var configuration: TMDBConfiguration!
+    private var configuration: TMDBConfiguration!
     
+    //completion aliases
     typealias ConfigurationCompletion = (TMDBConfiguration?)->()
     typealias GenreListCompletion = ([UInt:Genre]?)->()
     typealias MoviesByTitleCompletion = ([Movie]?)->()
     typealias CreditsByIDCompletion = (Movie?)->()
     
+    var dateFormatter = DateFormatter()
+    
     //---------------------------------------------------------------------------------------------------------------------------
     //singleton setup
     
-    static let sharedInstance = TMDBRequestManager()
+    static let sharedInstance = TMDBManager()
     private override init() {
         super.init()
         //grab tmdb api key used to authenticate requests
         if let plistPath = Bundle.main.path(forResource: "Info", ofType: "plist"),
         let plistDict = NSDictionary(contentsOfFile: plistPath),
-        let tmdbKey = plistDict["TMDb API Key"] as? String {
+        let tmdbKey = plistDict["TMDb Key"] as? String {
             self.tmdbKey = tmdbKey
         } else {
-            print("Unable to retrieve API key.")
+            print("Unable to retrieve TMDb key.")
         }
     }
     
     //---------------------------------------------------------------------------------------------------------------------------
+}
 
+//MARK: - Configuration Methods
+extension TMDBManager {
     private func getConfiguration(completion: @escaping ConfigurationCompletion) {
         if let config = configuration {
             //configuration data already retrieved, just return it
@@ -112,7 +118,10 @@ class TMDBRequestManager: NSObject {
             }
         }
     }
-    
+}
+
+//MARK: - Movie Search Methods
+extension TMDBManager {
     func searchMoviesByTitle(title: String, completion: @escaping MoviesByTitleCompletion) {
         getConfiguration() {[unowned self] config in
             if let _ = config { //ensure that we've successfully retrieved configuration data before searching movies
@@ -123,7 +132,13 @@ class TMDBRequestManager: NSObject {
                 Alamofire.request(self.baseRequestURL + self.searchEndpoint, method: .get, parameters: parameterDict).responseJSON { response in
                     if let responseDict = response.result.value as? [String:Any],
                     let searchResults = responseDict["results"] as? [[String:Any]] {
-                        print(searchResults)
+                        var movieResults: [Movie] = []
+                        for result in searchResults {
+                            movieResults.append(Movie(movieInfo: result))
+                        }
+                        for movie in movieResults {
+                            print(movie)
+                        }
                         completion(nil)
                     } else if let error = response.result.error {
                         //an error occurred
@@ -151,7 +166,7 @@ class TMDBRequestManager: NSObject {
         Alamofire.request(baseRequestURL + creditsEndpoint, method: .get, parameters: parameterDict).responseJSON { response in
             if let responseDict = response.result.value as? [String:Any] {
                 //filter directors, writers, and DPs from response
-                print(responseDict)
+                //print(responseDict)
                 completion(nil)
             } else if let error = response.result.error {
                 //an error occurred
@@ -163,5 +178,31 @@ class TMDBRequestManager: NSObject {
                 completion(nil)
             }
         }
+    }
+}
+
+//MARK: - Utility Methods
+extension TMDBManager {
+    func posterImageURLFromPath(_ path: String) -> URL? {
+        guard let config = configuration else {
+            print("No TMDb configuration found.")
+            return nil
+        }
+        let urlString = config.baseImageURL + config.posterImageSize + path
+        return URL(string: urlString)
+    }
+    
+    func genresForIDs(_ ids: [UInt]) -> [Genre]? {
+        guard let config = configuration else {
+            print("No TMDb configuration found.")
+            return nil
+        }
+        var genres: [Genre] = []
+        for id in ids {
+            if let genre = config.genresByID[id] {
+                genres.append(genre)
+            }
+        }
+        return genres
     }
 }
