@@ -29,8 +29,7 @@ struct Movie {
         overview = movieInfo["overview"] as? String
         language = movieInfo["original_language"] as? String
         if let releaseDateString = movieInfo["release_date"] as? String,
-        let releaseDate = TMDBManager.sharedInstance.dateFormatter.date(from: releaseDateString) {
-            print(releaseDate)
+        let releaseDate = TMDBManager.sharedInstance.movieSearchDateFormatter.date(from: releaseDateString) {
             self.releaseDate = releaseDate
         }
         if let genreIDs = movieInfo["genre_ids"] as? [UInt],

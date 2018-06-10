@@ -28,7 +28,8 @@ class TMDBManager: NSObject {
     typealias MoviesByTitleCompletion = ([Movie]?)->()
     typealias CreditsByIDCompletion = (Movie?)->()
     
-    var dateFormatter = DateFormatter()
+    var movieSearchDateFormatter = DateFormatter()
+    var movieDisplayDateFormatter = DateFormatter()
     
     //---------------------------------------------------------------------------------------------------------------------------
     //singleton setup
@@ -36,6 +37,8 @@ class TMDBManager: NSObject {
     static let sharedInstance = TMDBManager()
     private override init() {
         super.init()
+        movieSearchDateFormatter.dateFormat = "yyyy-MM-dd"
+        movieDisplayDateFormatter.dateFormat = "yyyy"
         //grab tmdb api key used to authenticate requests
         if let plistPath = Bundle.main.path(forResource: "Info", ofType: "plist"),
         let plistDict = NSDictionary(contentsOfFile: plistPath),
@@ -136,10 +139,7 @@ extension TMDBManager {
                         for result in searchResults {
                             movieResults.append(Movie(movieInfo: result))
                         }
-                        for movie in movieResults {
-                            print(movie)
-                        }
-                        completion(nil)
+                        completion(movieResults)
                     } else if let error = response.result.error {
                         //an error occurred
                         print(error.localizedDescription)
@@ -166,7 +166,7 @@ extension TMDBManager {
         Alamofire.request(baseRequestURL + creditsEndpoint, method: .get, parameters: parameterDict).responseJSON { response in
             if let responseDict = response.result.value as? [String:Any] {
                 //filter directors, writers, and DPs from response
-                //print(responseDict)
+                print(responseDict)
                 completion(nil)
             } else if let error = response.result.error {
                 //an error occurred
