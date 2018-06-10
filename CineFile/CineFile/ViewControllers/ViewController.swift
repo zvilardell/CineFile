@@ -12,8 +12,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        TMDBManager.sharedInstance.searchMoviesByTitle(title: "Days of Heaven") { movies in
-            TMDBManager.sharedInstance.getCreditsByMovieID(id: movies![0].id!) { _ in }
+        TMDBManager.instance.searchMoviesByTitle(title: "Days of Heaven") { movies in
+            TMDBManager.instance.getCreditsByMovieID(id: movies![0].id!) { _ in }
         }
     }
 }

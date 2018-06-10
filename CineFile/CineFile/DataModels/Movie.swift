@@ -29,15 +29,15 @@ struct Movie {
         overview = movieInfo["overview"] as? String
         language = movieInfo["original_language"] as? String
         if let releaseDateString = movieInfo["release_date"] as? String,
-        let releaseDate = TMDBManager.sharedInstance.movieSearchDateFormatter.date(from: releaseDateString) {
+        let releaseDate = TMDBManager.instance.movieSearchDateFormatter.date(from: releaseDateString) {
             self.releaseDate = releaseDate
         }
         if let genreIDs = movieInfo["genre_ids"] as? [UInt],
-        let genres = TMDBManager.sharedInstance.genresFromIDs(genreIDs) {
+        let genres = TMDBManager.instance.genresFromIDs(genreIDs) {
             self.genres = genres
         }
         if let posterPath = movieInfo["poster_path"] as? String,
-        let posterImageURL = TMDBManager.sharedInstance.posterImageURLFromPath(posterPath) {
+        let posterImageURL = TMDBManager.instance.posterImageURLFromPath(posterPath) {
             self.posterImageURL = posterImageURL
         }
     }

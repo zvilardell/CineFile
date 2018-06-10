@@ -34,7 +34,7 @@ class TMDBManager: NSObject {
     //---------------------------------------------------------------------------------------------------------------------------
     //singleton setup
     
-    static let sharedInstance = TMDBManager()
+    static let instance = TMDBManager()
     private override init() {
         super.init()
         movieSearchDateFormatter.dateFormat = "yyyy-MM-dd"
