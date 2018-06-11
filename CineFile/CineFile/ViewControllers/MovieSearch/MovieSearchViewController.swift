@@ -80,7 +80,7 @@ extension MovieSearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         //cellWidth is half the width of the collectionview minus 150% of the collectionview's interitem spacing value
         let cellWidth = floor(collectionView.bounds.width / 2.0) - floor(searchResultsInteritemSpacing * 1.5)
-        return CGSize(width: cellWidth, height: cellWidth * 1.7)
+        return CGSize(width: cellWidth, height: cellWidth * 1.7) //cell is 70% taller than it is wide
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
