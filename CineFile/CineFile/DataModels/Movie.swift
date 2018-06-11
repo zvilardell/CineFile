@@ -17,10 +17,8 @@ struct Movie {
     var releaseDate: Date?
     var genres: [Genre]?
     var posterImageURL: URL?
-    //retrievable from subsequent getCreditsByMovieID calls using our id
-    var directors: [String]?
-    var writers: [String]?
-    var cinematographers: [String]?
+    //retrievable from subsequent getCreditsByMovieID call using our id
+    var credits: Credits?
     
     init(movieInfo: [String:Any]) {
         //instantiate Movie object from dictionary

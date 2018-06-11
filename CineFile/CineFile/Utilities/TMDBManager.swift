@@ -26,7 +26,7 @@ class TMDBManager: NSObject {
     typealias ConfigurationCompletion = (TMDBConfiguration?)->()
     typealias GenreListCompletion = ([UInt:Genre]?)->()
     typealias MoviesByTitleCompletion = ([Movie]?)->()
-    typealias CreditsByIDCompletion = (Movie?)->()
+    typealias CreditsByIDCompletion = (Credits?)->()
     
     var movieSearchDateFormatter = DateFormatter()
     var movieDisplayDateFormatter = DateFormatter()
@@ -165,9 +165,8 @@ extension TMDBManager {
         let creditsEndpoint = creditsEndpointComponents[0] + "\(id)" + creditsEndpointComponents[1]
         Alamofire.request(baseRequestURL + creditsEndpoint, method: .get, parameters: parameterDict).responseJSON { response in
             if let responseDict = response.result.value as? [String:Any] {
-                //filter directors, writers, and DPs from response
-                print(responseDict)
-                completion(nil)
+                let credits = Credits(movieCreditsInfo: responseDict)
+                completion(credits)
             } else if let error = response.result.error {
                 //an error occurred
                 print(error.localizedDescription)

@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import SDWebImage
 
 class MovieThumbnailCollectionViewCell: UICollectionViewCell {
     
     static let reuseIdentifier: String = "MovieThumbnailCollectionViewCell"
 
     @IBOutlet weak var posterImageView: UIImageView!
-    @IBOutlet weak var titleYearLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var yearLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,6 +23,10 @@ class MovieThumbnailCollectionViewCell: UICollectionViewCell {
     }
 	
     func setup(movie: Movie?) {
-        print(movie)
+        posterImageView.sd_setImage(with: movie?.posterImageURL)
+        titleLabel.text = movie?.title
+        if let releaseDate = movie?.releaseDate {
+            yearLabel.text = "(\(TMDBManager.instance.movieDisplayDateFormatter.string(from: releaseDate)))"
+        }
     }
 }
