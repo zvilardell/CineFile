@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Movie Search-->
+        <!--Add Movie-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MovieSearchViewController" customModule="CineFile" customModuleProvider="target" sceneMemberID="viewController">
@@ -50,7 +50,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Movie Search" id="Ohr-qW-goz"/>
+                    <navigationItem key="navigationItem" title="Add Movie" id="Ohr-qW-goz"/>
                     <connections>
                         <outlet property="movieSearchCollectionView" destination="n56-hg-4kl" id="vIY-39-8ik"/>
                     </connections>
