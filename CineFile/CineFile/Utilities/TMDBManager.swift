@@ -17,7 +17,7 @@ class TMDBManager: NSObject {
     private let configurationEndpoint = "/configuration"
     private let genreListEndpoint = "/genre/movie/list"
     private let searchEndpoint = "/search/movie"
-    private let creditsEndpoint = "/movie/#/credits" // # replaced by movie id on request
+    private let creditsEndpoint = "/movie/#id/credits" // #id replaced by movie id on request
     
     //set when we retrieve configuration data
     private var configuration: TMDBConfiguration!
@@ -160,10 +160,8 @@ extension TMDBManager {
     func getCreditsByMovieID(id: UInt, completion: @escaping CreditsByIDCompletion) {
         let parameterDict: [String:String] = [
             "api_key"  : tmdbKey
-        ]
-        let creditsEndpointComponents: [String] = self.creditsEndpoint.components(separatedBy: "#")
-        let creditsEndpoint = creditsEndpointComponents[0] + "\(id)" + creditsEndpointComponents[1]
-        Alamofire.request(baseRequestURL + creditsEndpoint, method: .get, parameters: parameterDict).responseJSON { response in
+        ]        
+        Alamofire.request(baseRequestURL + creditsEndpoint.replacingOccurrences(of: "#id", with: "\(id)"), method: .get, parameters: parameterDict).responseJSON { response in
             if let responseDict = response.result.value as? [String:Any] {
                 let credits = Credits(movieCreditsInfo: responseDict)
                 completion(credits)
