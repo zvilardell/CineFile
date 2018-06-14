@@ -48,6 +48,12 @@
 		B6AAAB34202E6D1B005807DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6AAAB32202E6D1B005807DB /* LaunchScreen.storyboard */; };
 		B6AAAB3F202E6D1B005807DB /* CineFileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AAAB3E202E6D1B005807DB /* CineFileTests.swift */; };
 		B6AAAB4A202E6D1B005807DB /* CineFileUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AAAB49202E6D1B005807DB /* CineFileUITests.swift */; };
+		B6D90ACE20D21DF9003A2D80 /* BarcodeScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D90ACC20D21DF9003A2D80 /* BarcodeScanViewController.swift */; };
+		B6D90ACF20D21DF9003A2D80 /* BarcodeScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D90ACC20D21DF9003A2D80 /* BarcodeScanViewController.swift */; };
+		B6D90AD020D21DF9003A2D80 /* BarcodeScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D90ACC20D21DF9003A2D80 /* BarcodeScanViewController.swift */; };
+		B6D90AD120D21DF9003A2D80 /* BarcodeScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6D90ACD20D21DF9003A2D80 /* BarcodeScanViewController.xib */; };
+		B6D90AD220D21DF9003A2D80 /* BarcodeScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6D90ACD20D21DF9003A2D80 /* BarcodeScanViewController.xib */; };
+		B6D90AD320D21DF9003A2D80 /* BarcodeScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6D90ACD20D21DF9003A2D80 /* BarcodeScanViewController.xib */; };
 		B6F2920020CE31990070C723 /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F291FF20CE31990070C723 /* Credits.swift */; };
 		B6F2920120CE31990070C723 /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F291FF20CE31990070C723 /* Credits.swift */; };
 		B6F2920220CE31990070C723 /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F291FF20CE31990070C723 /* Credits.swift */; };
@@ -100,6 +106,8 @@
 		B6AAAB45202E6D1B005807DB /* CineFileUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CineFileUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6AAAB49202E6D1B005807DB /* CineFileUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CineFileUITests.swift; sourceTree = "<group>"; };
 		B6AAAB4B202E6D1B005807DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6D90ACC20D21DF9003A2D80 /* BarcodeScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScanViewController.swift; sourceTree = "<group>"; };
+		B6D90ACD20D21DF9003A2D80 /* BarcodeScanViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarcodeScanViewController.xib; sourceTree = "<group>"; };
 		B6F291FF20CE31990070C723 /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
 		EA9870AFA119FF8A82901C46 /* Pods-CineFileUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CineFileUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CineFileUITests/Pods-CineFileUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -205,6 +213,7 @@
 			children = (
 				B66C65F920CE12E3008A7F72 /* MovieSearchViewController.swift */,
 				B66C660920CE1559008A7F72 /* MovieThumbnailCollectionViewCell */,
+				B6D90AC720D21D90003A2D80 /* BarcodeScanning */,
 			);
 			path = MovieSearch;
 			sourceTree = "<group>";
@@ -264,6 +273,15 @@
 			path = CineFileUITests;
 			sourceTree = "<group>";
 		};
+		B6D90AC720D21D90003A2D80 /* BarcodeScanning */ = {
+			isa = PBXGroup;
+			children = (
+				B6D90ACC20D21DF9003A2D80 /* BarcodeScanViewController.swift */,
+				B6D90ACD20D21DF9003A2D80 /* BarcodeScanViewController.xib */,
+			);
+			path = BarcodeScanning;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -276,7 +294,6 @@
 				B6AAAB20202E6D1B005807DB /* Frameworks */,
 				B6AAAB21202E6D1B005807DB /* Resources */,
 				6D8515AD39C815226FD8B0EB /* [CP] Embed Pods Frameworks */,
-				C6FE65CB31CB1F365D801609 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -295,8 +312,6 @@
 				B6AAAB36202E6D1B005807DB /* Sources */,
 				B6AAAB37202E6D1B005807DB /* Frameworks */,
 				B6AAAB38202E6D1B005807DB /* Resources */,
-				7FAB7A4D20C77EFC8CF64D85 /* [CP] Embed Pods Frameworks */,
-				53EA1383F000CD8C0563B116 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -316,8 +331,6 @@
 				B6AAAB41202E6D1B005807DB /* Sources */,
 				B6AAAB42202E6D1B005807DB /* Frameworks */,
 				B6AAAB43202E6D1B005807DB /* Resources */,
-				EC51190F8F575DF88A33B1E9 /* [CP] Embed Pods Frameworks */,
-				1080382CB2C9913EA544CBDA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -380,6 +393,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6D90AD120D21DF9003A2D80 /* BarcodeScanViewController.xib in Resources */,
 				B66C65E820CDB1A4008A7F72 /* Info.plist in Resources */,
 				B6AAAB34202E6D1B005807DB /* LaunchScreen.storyboard in Resources */,
 				B6AAAB31202E6D1B005807DB /* Assets.xcassets in Resources */,
@@ -392,6 +406,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6D90AD220D21DF9003A2D80 /* BarcodeScanViewController.xib in Resources */,
 				B66C65F520CDB1D2008A7F72 /* Main.storyboard in Resources */,
 				B66C65F720CDB1D6008A7F72 /* LaunchScreen.storyboard in Resources */,
 				B66C65EB20CDB1AA008A7F72 /* Assets.xcassets in Resources */,
@@ -404,6 +419,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6D90AD320D21DF9003A2D80 /* BarcodeScanViewController.xib in Resources */,
 				B66C65F620CDB1D2008A7F72 /* Main.storyboard in Resources */,
 				B66C65F820CDB1D6008A7F72 /* LaunchScreen.storyboard in Resources */,
 				B66C65EC20CDB1AB008A7F72 /* Assets.xcassets in Resources */,
@@ -415,79 +431,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1080382CB2C9913EA544CBDA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CineFileUITests/Pods-CineFileUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		53EA1383F000CD8C0563B116 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CineFileTests/Pods-CineFileTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6D8515AD39C815226FD8B0EB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CineFile/Pods-CineFile-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/MTBBarcodeScanner/MTBBarcodeScanner.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MTBBarcodeScanner.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CineFile/Pods-CineFile-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7FAB7A4D20C77EFC8CF64D85 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CineFileTests/Pods-CineFileTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C6FE65CB31CB1F365D801609 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CineFile/Pods-CineFile-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D4CD2327FE32CED72F366CEB /* [CP] Check Pods Manifest.lock */ = {
@@ -496,13 +459,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CineFileTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E2816BF6B03ED6D83D8C8691 /* [CP] Check Pods Manifest.lock */ = {
@@ -511,28 +477,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CineFileUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		EC51190F8F575DF88A33B1E9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CineFileUITests/Pods-CineFileUITests-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F03252A31DC2B80BABBF8B93 /* [CP] Check Pods Manifest.lock */ = {
@@ -541,13 +495,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CineFile-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -561,6 +518,7 @@
 				B6AAAB2F202E6D1B005807DB /* CineFile.xcdatamodeld in Sources */,
 				B6AAAB27202E6D1B005807DB /* AppDelegate.swift in Sources */,
 				B627AB7D2048939700B3C84C /* TMDBConfiguration.swift in Sources */,
+				B6D90ACE20D21DF9003A2D80 /* BarcodeScanViewController.swift in Sources */,
 				B66C660320CE154F008A7F72 /* MovieThumbnailCollectionViewCell.swift in Sources */,
 				B627AB85204A207C00B3C84C /* Genre.swift in Sources */,
 				B63157F120CDAD5100D78039 /* TMDBManager.swift in Sources */,
@@ -577,6 +535,7 @@
 				B66C65E620CDB19C008A7F72 /* AppDelegate.swift in Sources */,
 				B63157F220CDAD5100D78039 /* TMDBManager.swift in Sources */,
 				B66C65F120CDB1B9008A7F72 /* Genre.swift in Sources */,
+				B6D90ACF20D21DF9003A2D80 /* BarcodeScanViewController.swift in Sources */,
 				B66C660420CE154F008A7F72 /* MovieThumbnailCollectionViewCell.swift in Sources */,
 				B6AAAB3F202E6D1B005807DB /* CineFileTests.swift in Sources */,
 				B66C65EF20CDB1B6008A7F72 /* TMDBConfiguration.swift in Sources */,
@@ -593,6 +552,7 @@
 				B66C65E720CDB19C008A7F72 /* AppDelegate.swift in Sources */,
 				B63157F320CDAD5100D78039 /* TMDBManager.swift in Sources */,
 				B66C65F220CDB1BA008A7F72 /* Genre.swift in Sources */,
+				B6D90AD020D21DF9003A2D80 /* BarcodeScanViewController.swift in Sources */,
 				B66C660520CE154F008A7F72 /* MovieThumbnailCollectionViewCell.swift in Sources */,
 				B6AAAB4A202E6D1B005807DB /* CineFileUITests.swift in Sources */,
 				B66C65F020CDB1B6008A7F72 /* TMDBConfiguration.swift in Sources */,

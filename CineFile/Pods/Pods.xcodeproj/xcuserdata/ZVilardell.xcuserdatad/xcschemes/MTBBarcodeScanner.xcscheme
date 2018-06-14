@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '9DF61A38842AB92FE7443ED3A096DCD3'
-               BlueprintName = 'MTBBarcodeScanner'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'MTBBarcodeScanner.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9DF61A38842AB92FE7443ED3A096DCD3"
+               BlueprintName = "MTBBarcodeScanner"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "MTBBarcodeScanner.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
