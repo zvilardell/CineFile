@@ -51,7 +51,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Movie" id="Ohr-qW-goz">
-                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="cJV-9C-st5"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="cJV-9C-st5">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="scanbarCode:" destination="BYZ-38-t0r" id="EAf-64-X6p"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="movieSearchCollectionView" destination="n56-hg-4kl" id="vIY-39-8ik"/>
