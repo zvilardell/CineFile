@@ -1,5 +1,5 @@
 //
-//  BarcodeScanViewController.swift
+//  BarcodeScannerViewController.swift
 //  CineFile
 //
 //  Created by Zach Vilardell on 6/13/18.
@@ -9,7 +9,7 @@
 import UIKit
 import MTBBarcodeScanner
 
-class BarcodeScanViewController: UIViewController {
+class BarcodeScannerViewController: UIViewController {
 
     var barcodeScanner: MTBBarcodeScanner?
     

@@ -31,7 +31,7 @@ class MovieSearchViewController: UIViewController {
     }
     
     @IBAction func scanbarCode(_ sender: UIBarButtonItem) {
-        present(BarcodeScanViewController(), animated: true, completion: nil)
+        present(BarcodeScannerViewController(), animated: true, completion: nil)
     }
 }
 
