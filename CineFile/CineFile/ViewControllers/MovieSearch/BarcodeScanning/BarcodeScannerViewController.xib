@@ -29,7 +29,7 @@
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" image="ChevronDown"/>
                     <connections>
-                        <action selector="dismissScanner:" destination="-1" eventType="touchUpInside" id="4mR-w6-YWE"/>
+                        <action selector="dismissScanner" destination="-1" eventType="touchUpInside" id="se9-SN-Cl9"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan Barcode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4O-ZU-4Jz">
@@ -59,7 +59,7 @@
         </view>
         <swipeGestureRecognizer direction="down" id="4En-YI-f9e">
             <connections>
-                <action selector="swipeDown:" destination="-1" id="bxa-Uc-ohI"/>
+                <action selector="dismissScanner" destination="-1" id="tdr-2C-Zs4"/>
             </connections>
         </swipeGestureRecognizer>
     </objects>
