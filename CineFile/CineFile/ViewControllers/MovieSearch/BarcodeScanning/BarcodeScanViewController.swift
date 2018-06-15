@@ -27,4 +27,11 @@ class BarcodeScanViewController: UIViewController {
         super.viewWillDisappear(animated)
     }
 
+    @IBAction func dismissScanner(_ sender: UIButton?) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func swipeDown(_ sender: UISwipeGestureRecognizer) {
+        dismissScanner(nil)
+    }
 }
