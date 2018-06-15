@@ -20,11 +20,16 @@ class BarcodeScannerViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        startScanning()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         barcodeScanner?.stopScanning()
         super.viewWillDisappear(animated)
+    }
+    
+    private func startScanning() {
+        
     }
 
     @IBAction func dismissScanner(_ sender: UIButton?) {
