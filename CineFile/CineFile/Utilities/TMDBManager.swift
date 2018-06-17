@@ -219,8 +219,8 @@ extension TMDBManager {
             if let responseDict = response.result.value as? [String:Any],
             let productArray = responseDict["products"] as? [[String:Any]],
             let product = productArray.first,
-            let movieTitle = product["product_name"] as? String {
-                print(movieTitle)
+            let movieTitle = product["title"] as? String, movieTitle != "" {
+                print(product)
                 completion(movieTitle)
             } else if let error = response.result.error {
                 //an error occurred
@@ -228,7 +228,7 @@ extension TMDBManager {
                 completion(nil)
             } else {
                 //an unknown error occurred
-                print("Unable to retrieve title from barcode at this time.")
+                print("Unable to retrieve title from barcode.")
                 completion(nil)
             }
         }
