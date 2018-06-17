@@ -54,7 +54,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="camera" id="cJV-9C-st5">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="scanbarCode:" destination="BYZ-38-t0r" id="EAf-64-X6p"/>
+                                <action selector="scanBarcode:" destination="BYZ-38-t0r" id="EAf-64-X6p"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -17,21 +17,37 @@ class MovieSearchViewController: UIViewController {
     let searchResultsInteritemSpacing: CGFloat = 8.0 //minimum of 8 points spacing between row items in the collection view
     let searchResultsLineSpacing: CGFloat = 15.0 //minimum of 24 points spacing between rows in the collection view
     
+    var barcodeScanResultTitleString: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         movieSearchCollectionView.register(UINib(nibName: "MovieThumbnailCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: MovieThumbnailCollectionViewCell.reuseIdentifier)
-        TMDBManager.instance.searchMoviesByTitle(title: "Superbad") { [unowned self] movies in
-            var results: [Movie] = []
-            for _ in 0...100 {
-                results.append(contentsOf: movies!)
-            }
-            self.movieSearchResults = results
-            self.movieSearchCollectionView.reloadData()
+        searchMoviesByTitle("Godzilla")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let titleString = barcodeScanResultTitleString {
+            //clear barcode scan result
+            barcodeScanResultTitleString = nil
+            //search for movies by title
+            searchMoviesByTitle(titleString)
         }
     }
     
-    @IBAction func scanbarCode(_ sender: UIBarButtonItem) {
-        present(BarcodeScannerViewController(), animated: true, completion: nil)
+    func searchMoviesByTitle(_ title: String) {
+        TMDBManager.instance.getMoviesByTitle(title: title) { [unowned self] searchResults in
+            if let results = searchResults {
+                self.movieSearchResults = results
+                self.movieSearchCollectionView.reloadData()
+            }
+        }
+    }
+    
+    @IBAction func scanBarcode(_ sender: UIBarButtonItem) {
+        let barcodeScannerVC = BarcodeScannerViewController()
+        barcodeScannerVC.presenter = self
+        present(barcodeScannerVC, animated: true, completion: nil)
     }
 }
 

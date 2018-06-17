@@ -9,7 +9,7 @@
 import Foundation
 
 struct Movie {
-    //retrievable from searchMoviesByTitle calls
+    //retrievable from getMoviesByTitle calls
     var id: UInt?
     var title: String?
     var overview: String?

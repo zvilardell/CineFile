@@ -27,6 +27,7 @@ class TMDBManager: NSObject {
     typealias GenreListCompletion = ([UInt:Genre]?)->()
     typealias MoviesByTitleCompletion = ([Movie]?)->()
     typealias CreditsByIDCompletion = (Credits?)->()
+    typealias TitleFromBarcodeCompletion = (String?)->()
     
     var movieSearchDateFormatter = DateFormatter()
     var movieDisplayDateFormatter = DateFormatter()
@@ -125,7 +126,7 @@ extension TMDBManager {
 
 //MARK: - Movie Search Methods
 extension TMDBManager {
-    func searchMoviesByTitle(title: String, completion: @escaping MoviesByTitleCompletion) {
+    func getMoviesByTitle(title: String, completion: @escaping MoviesByTitleCompletion) {
         getConfiguration() {[unowned self] config in
             if let _ = config { //ensure that we've successfully retrieved configuration data before searching movies
                 let parameterDict: [String:String] = [
@@ -139,7 +140,13 @@ extension TMDBManager {
                         for result in searchResults {
                             movieResults.append(Movie(movieInfo: result))
                         }
-                        completion(movieResults)
+                        let sortedResults = movieResults.sorted{ movie1, movie2 in
+                            guard let releaseDate1 = movie1.releaseDate, let releaseDate2 = movie2.releaseDate else {
+                                return false
+                            }
+                            return releaseDate1 > releaseDate2 //sort movie search results by most recent
+                        }
+                        completion(sortedResults)
                     } else if let error = response.result.error {
                         //an error occurred
                         print(error.localizedDescription)
@@ -201,5 +208,29 @@ extension TMDBManager {
             }
         }
         return genres
+    }
+    
+    func getMovieTitleFromBarcodeString(_ bardcode: String, completion: @escaping TitleFromBarcodeCompletion) {
+        let parameterDict: [String:String] = [
+            "barcode" : bardcode,
+            "key" : "tr28urb7rk9q7j0vg3t4e811fhp312"
+        ]
+        Alamofire.request("https://api.barcodelookup.com/v2/products", method: .get, parameters: parameterDict).responseJSON { response in
+            if let responseDict = response.result.value as? [String:Any],
+            let productArray = responseDict["products"] as? [[String:Any]],
+            let product = productArray.first,
+            let movieTitle = product["product_name"] as? String {
+                print(movieTitle)
+                completion(movieTitle)
+            } else if let error = response.result.error {
+                //an error occurred
+                print(error.localizedDescription)
+                completion(nil)
+            } else {
+                //an unknown error occurred
+                print("Unable to retrieve title from barcode at this time.")
+                completion(nil)
+            }
+        }
     }
 }
