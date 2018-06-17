@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="n56-hg-4kl">
-                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1ZF-q8-NRU">
                                     <size key="itemSize" width="100" height="200"/>
@@ -33,20 +33,13 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="8jy-jb-Fq5"/>
                                 </connections>
                             </collectionView>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search TMDb" translatesAutoresizingMaskIntoConstraints="NO" id="Dtd-69-GWF">
-                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="n56-hg-4kl" firstAttribute="top" secondItem="Dtd-69-GWF" secondAttribute="bottom" id="7Df-bY-kLP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="n56-hg-4kl" secondAttribute="bottom" id="BGe-Yd-cFJ"/>
+                            <constraint firstItem="n56-hg-4kl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="MPh-jo-UOQ"/>
                             <constraint firstItem="n56-hg-4kl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YMg-PK-nKt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="n56-hg-4kl" secondAttribute="trailing" id="jOl-Cr-fQD"/>
-                            <constraint firstItem="Dtd-69-GWF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mSI-Ps-jw1"/>
-                            <constraint firstItem="Dtd-69-GWF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="njY-Dw-ySR"/>
-                            <constraint firstItem="Dtd-69-GWF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="uAB-Aw-A5h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
